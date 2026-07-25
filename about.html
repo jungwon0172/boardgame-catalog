@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소개 — 보드게임 서가</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --felt:#16302A; --felt-deep:#0E211D; --paper:#F1E9D8; --paper-dim:#E4DAC3;
+  --ink:#241C15; --ink-soft:#4B4033; --brass:#C9973F; --brass-bright:#E0B25E;
+  --line:rgba(36,28,21,0.14); --line-on-felt:rgba(241,233,216,0.16);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
+a{color:var(--felt);}
+header{position:sticky;top:0;z-index:50;background:var(--felt);color:var(--paper);border-bottom:1px solid var(--line-on-felt);}
+.header-inner{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:900;font-size:20px;text-decoration:none;color:var(--paper);}
+.logo-mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--brass),#2F6F62);flex:none;}
+nav{display:flex;gap:20px;font-size:13.5px;font-weight:500;}
+nav a{text-decoration:none;color:var(--paper);opacity:0.82;}
+nav a:hover{opacity:1;}
+main{max-width:760px;margin:0 auto;padding:56px 28px 80px;}
+main h1{font-size:clamp(26px,4vw,36px);margin:0 0 8px;}
+.updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:0 0 40px;}
+main h2{font-size:19px;margin:36px 0 12px;}
+main p, main li{font-size:14.5px;line-height:1.85;color:var(--ink-soft);}
+main ul{padding-left:20px;}
+.card-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:24px 0;}
+footer{background:var(--felt-deep);color:var(--paper-dim);padding:24px 28px 32px;text-align:center;font-size:12.5px;font-family:'IBM Plex Mono',monospace;border-top:1px solid var(--line-on-felt);}
+footer a{color:var(--paper-dim);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+@media (max-width:640px){ nav{display:none;} }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark"></span>보드게임 서가</a>
+    <nav>
+      <a href="index.html#catalog">카탈로그</a>
+      <a href="index.html#ranking">세계 순위</a>
+      <a href="about.html">소개</a>
+      <a href="contact.html">문의</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<h1>소개</h1>
+<p class="updated">보드게임 서가는 어떤 곳인가요</p>
+
+<p>보드게임 서가는 가족 게임부터 헤비 유로게임까지, 다양한 보드게임을 인원·플레이 시간·난이도 기준으로 정리해 소개하는 카탈로그 사이트입니다. 어떤 게임을 살지, 어떤 게임을 처음 시도해볼지 고민하는 분들이 빠르게 필요한 정보를 확인할 수 있도록 만들었습니다.</p>
+
+<h2>무엇을 다루나요</h2>
+<ul>
+  <li>124종 이상의 보드게임을 8개 카테고리(가족, 파티, 협력, 헤비유로, 덱빌딩, 추상전략, 워게임, 카드게임)로 분류</li>
+  <li>각 게임의 인원 수, 플레이 시간, 난이도, 추천 이유</li>
+  <li>BoardGameGeek 등 외부 커뮤니티의 평점 및 순위 정보</li>
+</ul>
+
+<h2>운영 방식</h2>
+<p>본 사이트는 개인이 운영하는 정보 제공형 사이트이며, 사이트 운영은 광고 및 제휴 링크를 통한 수익으로 유지됩니다. 게재된 리뷰와 추천 문구는 운영자가 직접 조사·작성한 내용이며, 특정 게임 제작사로부터 대가를 받고 작성된 콘텐츠는 없습니다.</p>
+
+<h2>문의</h2>
+<p>궁금한 점이나 정정 요청이 있다면 <a href="contact.html">문의 페이지</a>를 통해 언제든 연락해 주세요.</p>
+
+</main>
+<footer>
+  보드게임 서가 · <a href="about.html">소개</a> · <a href="privacy.html">개인정보처리방침</a> · <a href="terms.html">이용약관</a> · <a href="contact.html">문의</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문의 — 보드게임 서가</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --felt:#16302A; --felt-deep:#0E211D; --paper:#F1E9D8; --paper-dim:#E4DAC3;
+  --ink:#241C15; --ink-soft:#4B4033; --brass:#C9973F; --brass-bright:#E0B25E;
+  --line:rgba(36,28,21,0.14); --line-on-felt:rgba(241,233,216,0.16);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
+a{color:var(--felt);}
+header{position:sticky;top:0;z-index:50;background:var(--felt);color:var(--paper);border-bottom:1px solid var(--line-on-felt);}
+.header-inner{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:900;font-size:20px;text-decoration:none;color:var(--paper);}
+.logo-mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--brass),#2F6F62);flex:none;}
+nav{display:flex;gap:20px;font-size:13.5px;font-weight:500;}
+nav a{text-decoration:none;color:var(--paper);opacity:0.82;}
+nav a:hover{opacity:1;}
+main{max-width:760px;margin:0 auto;padding:56px 28px 80px;}
+main h1{font-size:clamp(26px,4vw,36px);margin:0 0 8px;}
+.updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin:0 0 40px;}
+main h2{font-size:19px;margin:36px 0 12px;}
+main p, main li{font-size:14.5px;line-height:1.85;color:var(--ink-soft);}
+main ul{padding-left:20px;}
+.card-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:24px 0;}
+footer{background:var(--felt-deep);color:var(--paper-dim);padding:24px 28px 32px;text-align:center;font-size:12.5px;font-family:'IBM Plex Mono',monospace;border-top:1px solid var(--line-on-felt);}
+footer a{color:var(--paper-dim);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+@media (max-width:640px){ nav{display:none;} }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark"></span>보드게임 서가</a>
+    <nav>
+      <a href="index.html#catalog">카탈로그</a>
+      <a href="index.html#ranking">세계 순위</a>
+      <a href="about.html">소개</a>
+      <a href="contact.html">문의</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<h1>문의</h1>
+<p class="updated">운영자에게 연락하는 방법</p>
+
+<p>사이트 이용 중 궁금한 점, 정보 오류 제보, 게임 추가 제안, 제휴 및 광고 관련 문의는 아래 이메일로 연락해 주시기 바랍니다.</p>
+
+<div class="card-box">
+  <p class="mono" style="font-size:15px;color:var(--ink);margin:0;">yjw2172@naver.com</p>
+  <p style="margin-top:10px;">보통 영업일 기준 2~3일 이내에 답변드리고 있습니다.</p>
+</div>
+
+<h2>자주 묻는 문의 유형</h2>
+<ul>
+  <li>게임 정보(인원, 시간, 난이도, 평점)의 오류 정정 요청</li>
+  <li>카탈로그에 추가했으면 하는 게임 제안</li>
+  <li>제휴 링크 및 광고 관련 제안</li>
+  <li>저작권 관련 문의</li>
+</ul>
+
+</main>
+<footer>
+  보드게임 서가 · <a href="about.html">소개</a> · <a href="privacy.html">개인정보처리방침</a> · <a href="terms.html">이용약관</a> · <a href="contact.html">문의</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="가족 게임부터 헤비 유로게임까지, 124종의 보드게임을 인원·플레이 시간·난이도와 함께 정리하고 세계 인기 순위를 소개하는 보드게임 카탈로그입니다.">
+<title>보드게임 서가 — 알던 게임과 처음 보는 게임</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt: #16302A;
+    --felt-deep: #0E211D;
+    --paper: #F1E9D8;
+    --paper-dim: #E4DAC3;
+    --ink: #241C15;
+    --ink-soft: #4B4033;
+    --brass: #C9973F;
+    --brass-bright: #E0B25E;
+    --line: rgba(36,28,21,0.14);
+    --line-on-felt: rgba(241,233,216,0.16);
+    --shadow: 0 14px 32px rgba(14,33,29,0.22);
+
+    --c-family: #C4623A;
+    --c-family-d: #8F4527;
+    --c-party: #B23A6B;
+    --c-party-d: #7E2A4C;
+    --c-coop: #2F6F62;
+    --c-coop-d: #1E4A41;
+    --c-heavy: #33406B;
+    --c-heavy-d: #222B4A;
+    --c-deck: #A67C1E;
+    --c-deck-d: #7A5A12;
+    --c-abstract: #4A4E58;
+    --c-abstract-d: #303339;
+    --c-war: #6B2E2E;
+    --c-war-d: #4A1E1E;
+    --c-card: #5C3B6B;
+    --c-card-d: #3E2748;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  a{color:inherit;}
+  button{font-family:inherit;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--felt); color:var(--paper);
+    border-bottom:1px solid var(--line-on-felt);
+  }
+  .header-inner{
+    max-width:1240px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:900; font-size:21px;
+  }
+  .logo-mark{
+    width:24px;height:24px;border-radius:6px;
+    background:linear-gradient(135deg, var(--brass), var(--c-coop));
+    flex:none;
+  }
+  nav{display:flex; gap:24px; font-size:14px; font-weight:500;}
+  nav a{ text-decoration:none; opacity:0.82; transition:opacity .2s; border-bottom:1px solid transparent; padding-bottom:2px;}
+  nav a:hover{opacity:1; border-color:var(--brass-bright);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      linear-gradient(150deg, rgba(22,48,42,0.94), rgba(14,33,29,0.97)),
+      radial-gradient(ellipse 700px 400px at 85% -10%, rgba(201,151,63,0.18), transparent 60%),
+      url('https://commons.wikimedia.org/wiki/Special:FilePath/DnD_Dice_Set.jpg') center/cover;
+    color:var(--paper);
+    padding:64px 28px 56px;
+    position:relative;
+  }
+  .photo-credit{
+    position:absolute; right:16px; bottom:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color:rgba(241,233,216,0.45);
+  }
+  .photo-credit a{color:inherit; text-decoration:underline;}
+  .hero-inner{max-width:1240px; margin:0 auto;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--brass-bright);
+    border:1px solid var(--line-on-felt); border-radius:999px;
+    padding:6px 14px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; font-size:8px; color:var(--c-family);}
+  .hero h1{
+    font-size:clamp(30px, 4.4vw, 48px);
+    line-height:1.18; max-width:760px; margin:0 0 16px;
+  }
+  .hero p{
+    font-size:16px; line-height:1.7; color:var(--paper-dim);
+    max-width:560px; margin:0 0 32px;
+  }
+  .hero-stats{ display:flex; gap:0; flex-wrap:wrap; border-top:1px solid var(--line-on-felt); max-width:640px;}
+  .hero-stat{ padding:16px 26px 0 0; margin-right:26px; border-top:2px solid var(--brass); margin-top:-1px; min-width:110px;}
+  .hero-stat .num{font-family:'Fraunces',serif; font-weight:700; font-size:26px;}
+  .hero-stat .label{font-size:12px; color:var(--paper-dim); margin-top:4px;}
+
+  /* ---------- CONTROLS ---------- */
+  .controls{
+    position:sticky; top:57px; z-index:40;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    padding:16px 28px;
+  }
+  .controls-inner{max-width:1240px; margin:0 auto; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .search-box{
+    flex:1 1 220px; min-width:180px;
+    display:flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:9px 13px;
+  }
+  .search-box input{
+    border:none; outline:none; font-family:'Inter',sans-serif; font-size:14px;
+    width:100%; background:transparent; color:var(--ink);
+  }
+  .search-box svg{flex:none; opacity:0.5;}
+  .filter-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    background:transparent; border:1px solid var(--line); color:var(--ink-soft);
+    padding:8px 15px; border-radius:999px; cursor:pointer; transition:all .18s; white-space:nowrap;
+  }
+  .filter-tag:hover{border-color:var(--c-family); color:var(--ink);}
+  .filter-tag.active{ background:var(--felt); border-color:var(--felt); color:var(--paper);}
+
+  /* ---------- CATALOG ---------- */
+  .catalog{max-width:1240px; margin:0 auto; padding:40px 28px 20px;}
+  .section-heading{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:24px; flex-wrap:wrap;}
+  .section-heading h2{font-size:clamp(22px,2.8vw,28px); margin:0;}
+  .section-heading .count{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);}
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:22px; }
+
+  .card{
+    background:#fff; border-radius:14px; overflow:hidden;
+    box-shadow:var(--shadow); display:flex; flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-3px);}
+
+  .cover{
+    aspect-ratio:4/3; position:relative; display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:""; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 22px);
+  }
+  .cover .initial{
+    position:absolute; left:10px; bottom:4px;
+    font-family:'Fraunces',serif; font-weight:900; font-size:64px;
+    color:rgba(255,255,255,0.14); line-height:1; user-select:none;
+  }
+  .cover svg.icon{ width:44%; height:44%; position:relative; z-index:1; opacity:0.95; }
+  .cover .cat-chip{
+    position:absolute; top:10px; left:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
+    background:rgba(0,0,0,0.28); color:#fff; padding:3px 8px; border-radius:999px;
+  }
+
+  .card-body{ padding:16px 16px 18px; display:flex; flex-direction:column; gap:9px; flex:1;}
+  .card-title{ display:flex; flex-direction:column; gap:1px;}
+  .card-title .ko{ font-family:'Fraunces',serif; font-weight:700; font-size:16.5px; color:var(--ink); line-height:1.3;}
+  .card-title .en{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft);}
+  .stat-row{ display:flex; gap:6px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft);}
+  .stat-row span{ border:1px solid var(--line); border-radius:5px; padding:2px 7px;}
+  .card-review{ font-size:13px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .card-cats{ display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; padding-top:6px;}
+  .card-cats span{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--ink-soft); background:var(--paper-dim); padding:2px 8px; border-radius:999px;}
+
+  .review-row{ display:flex; align-items:center; gap:8px; padding-top:10px; margin-top:4px; border-top:1px solid var(--line); flex-wrap:wrap;}
+  .rating-badge{
+    display:flex; align-items:center; gap:4px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:var(--ink);
+    background:var(--paper-dim); border-radius:6px; padding:3px 8px;
+    text-decoration:none; transition:background .15s;
+  }
+  .rating-badge:hover{ background:var(--brass); color:#fff;}
+  .rating-badge svg{width:11px; height:11px; fill:var(--brass);}
+  .rating-badge:hover svg{fill:#fff;}
+  .rating-source{font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--ink-soft);}
+
+  .empty-state{ grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--ink-soft); font-size:14px;}
+
+  /* ---------- RANKING ---------- */
+  .ranking-wrap{ background:var(--felt-deep); padding:64px 28px 76px; margin-top:56px;}
+  .ranking-inner{max-width:1000px; margin:0 auto; color:var(--paper);}
+  .ranking-inner .section-heading h2{color:var(--paper);}
+  .ranking-inner .section-heading .count{color:var(--paper-dim);}
+  .ranking-note{ font-size:13.5px; line-height:1.75; color:var(--paper-dim); max-width:640px; margin:0 0 30px;}
+  .rank-table{ width:100%; border-collapse:collapse; }
+  .rank-table thead th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--brass-bright); padding:0 12px 10px; border-bottom:1px solid var(--line-on-felt); font-weight:500;
+  }
+  .rank-table tbody tr{ border-bottom:1px solid var(--line-on-felt); transition:background .15s;}
+  .rank-table tbody tr:hover{ background:rgba(241,233,216,0.04);}
+  .rank-table td{ padding:13px 12px; font-size:13.5px; vertical-align:middle;}
+  .rank-num{ font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:var(--brass-bright); width:36px;}
+  .rank-name .ko{ font-family:'Fraunces',serif; font-weight:600; font-size:14.5px;}
+  .rank-name .en{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--paper-dim);}
+  .rank-stats{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper-dim); white-space:nowrap;}
+  .rank-cats{ display:flex; gap:5px; flex-wrap:wrap;}
+  .rank-cats span{ font-family:'IBM Plex Mono',monospace; font-size:9px; background:rgba(241,233,216,0.08); padding:2px 7px; border-radius:999px; color:var(--paper-dim);}
+
+  footer{
+    background:var(--felt-deep); color:var(--paper-dim); padding:24px 28px 32px; text-align:center;
+    font-size:12.5px; font-family:'IBM Plex Mono',monospace; border-top:1px solid var(--line-on-felt);
+  }
+  footer a{ text-decoration:underline; }
+
+  .cookie-banner{
+    position:fixed; left:0; right:0; bottom:0; z-index:100;
+    background:var(--felt-deep); color:var(--paper-dim);
+    border-top:1px solid var(--line-on-felt);
+    padding:14px 20px; display:none;
+    align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;
+    font-size:12.5px; line-height:1.6;
+  }
+  .cookie-banner.show{ display:flex; }
+  .cookie-banner a{ color:var(--brass-bright); text-decoration:underline; }
+  .cookie-banner button{
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    background:var(--brass); color:var(--felt-deep); border:none;
+    padding:8px 16px; border-radius:999px; cursor:pointer; font-weight:600;
+  }
+
+  @media (max-width:760px){
+    nav{display:none;}
+    .controls{top:53px;}
+    .grid{grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:14px;}
+    .rank-table{font-size:12px;}
+    .rank-stats{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><span class="logo-mark"></span>보드게임 서가</div>
+    <nav>
+      <a href="#catalog">카탈로그</a>
+      <a href="#ranking">세계 순위</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Board Game Catalog</div>
+    <h1>알던 게임도, 처음 보는 게임도<br>여기서 한 번에.</h1>
+    <p>가족 게임부터 헤비 유로게임까지, 124종의 보드게임을 인원·시간·난이도와 함께 정리했습니다. 왜 추천하는지 이유도 한 줄씩 남겼습니다.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num mono">124</div><div class="label">수록 게임</div></div>
+      <div class="hero-stat"><div class="num mono">8</div><div class="label">카테고리</div></div>
+      <div class="hero-stat"><div class="num mono">50</div><div class="label">세계 순위 게임</div></div>
+    </div>
+  </div>
+  <span class="photo-credit">사진: Wikimedia Commons (Public Domain)</span>
+</section>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="게임 이름으로 검색">
+    </div>
+    <button class="filter-tag active" data-cat="all">전체</button>
+    <button class="filter-tag" data-cat="family">가족</button>
+    <button class="filter-tag" data-cat="party">파티</button>
+    <button class="filter-tag" data-cat="coop">협력</button>
+    <button class="filter-tag" data-cat="heavy">헤비유로</button>
+    <button class="filter-tag" data-cat="deck">덱빌딩</button>
+    <button class="filter-tag" data-cat="abstract">추상전략</button>
+    <button class="filter-tag" data-cat="war">워게임</button>
+    <button class="filter-tag" data-cat="card">카드게임</button>
+  </div>
+</div>
+
+<section class="catalog" id="catalog">
+  <div class="section-heading">
+    <h2>카탈로그</h2>
+    <span class="count mono"><span id="visible-count">124</span>개 표시 중</span>
+  </div>
+  <p style="font-size:13px;line-height:1.7;color:var(--ink-soft);max-width:640px;margin:-10px 0 24px;">
+    현재는 실제로 확인한 6개 게임만 BGG 평점을 표시하고 있습니다. 나머지는 "BGG 평점 미확인"으로 표기되며, 점수가 표시된 카드는 클릭하면 BGG 검색 결과로 이동합니다.
+  </p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="ranking-wrap" id="ranking">
+  <div class="ranking-inner">
+    <div class="section-heading">
+      <h2>세계 순위</h2>
+      <span class="count mono">TOP 50</span>
+    </div>
+    <p class="ranking-note">BoardGameGeek 커뮤니티 활동량(평가 수, 플레이 기록, 위시리스트 등재 빈도)을 기준으로 집계된 인기 순위입니다. 2026년 7월 기준이며, 순위는 계속 바뀔 수 있습니다.</p>
+    <table class="rank-table">
+      <thead>
+        <tr><th>순위</th><th>게임</th><th>카테고리</th><th>인원 · 시간</th></tr>
+      </thead>
+      <tbody id="rank-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  보드게임 서가 · 알려진 게임과 알려지지 않은 게임을 함께 소개합니다.<br>
+  <a href="about.html">소개</a> · <a href="privacy.html">개인정보처리방침</a> · <a href="terms.html">이용약관</a> · <a href="contact.html">문의</a>
+</footer>
+
+<!-- ICONS -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="icon-family" viewBox="0 0 100 100">
+      <rect x="20" y="20" width="26" height="26" rx="6" fill="#fff" opacity="0.92"/>
+      <circle cx="27" cy="27" r="3" fill="currentColor"/><circle cx="39" cy="27" r="3" fill="currentColor"/>
+      <circle cx="27" cy="39" r="3" fill="currentColor"/><circle cx="39" cy="39" r="3" fill="currentColor"/>
+      <rect x="52" y="46" width="26" height="26" rx="6" fill="#fff" opacity="0.92" transform="rotate(12 65 59)"/>
+      <g transform="rotate(12 65 59)"><circle cx="59" cy="53" r="2.6" fill="currentColor"/><circle cx="71" cy="53" r="2.6" fill="currentColor"/><circle cx="65" cy="59" r="2.6" fill="currentColor"/><circle cx="59" cy="65" r="2.6" fill="currentColor"/><circle cx="71" cy="65" r="2.6" fill="currentColor"/></g>
+    </symbol>
+    <symbol id="icon-party" viewBox="0 0 100 100">
+      <path d="M50 14 L58 40 L86 40 L63 56 L71 82 L50 66 L29 82 L37 56 L14 40 L42 40 Z" fill="#fff" opacity="0.92"/>
+    </symbol>
+    <symbol id="icon-coop" viewBox="0 0 100 100">
+      <path d="M30 30 h20 v14 a7 7 0 0 0 14 0 v-14 h6 v20 h-14 a7 7 0 0 0 0 14 v6 h-20 v-20 h14 a7 7 0 0 0 0 -14 z" fill="#fff" opacity="0.9"/>
+    </symbol>
+    <symbol id="icon-heavy" viewBox="0 0 100 100">
+      <polygon points="50,12 84,31 84,69 50,88 16,69 16,31" fill="none" stroke="#fff" stroke-width="4" opacity="0.9"/>
+      <circle cx="50" cy="50" r="12" fill="#fff" opacity="0.85"/>
+    </symbol>
+    <symbol id="icon-deck" viewBox="0 0 100 100">
+      <rect x="24" y="34" width="40" height="54" rx="6" fill="#fff" opacity="0.55" transform="rotate(-8 44 61)"/>
+      <rect x="34" y="30" width="40" height="54" rx="6" fill="#fff" opacity="0.75" transform="rotate(4 54 57)"/>
+      <rect x="30" y="26" width="40" height="54" rx="6" fill="#fff" opacity="0.95"/>
+    </symbol>
+    <symbol id="icon-abstract" viewBox="0 0 100 100">
+      <polygon points="50,16 86,82 14,82" fill="none" stroke="#fff" stroke-width="4" opacity="0.9"/>
+      <circle cx="50" cy="58" r="6" fill="#fff" opacity="0.9"/>
+    </symbol>
+    <symbol id="icon-war" viewBox="0 0 100 100">
+      <g stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.9">
+        <line x1="20" y1="20" x2="80" y2="80"/><line x1="80" y1="20" x2="20" y2="80"/>
+      </g>
+      <circle cx="50" cy="50" r="9" fill="#fff" opacity="0.9"/>
+    </symbol>
+    <symbol id="icon-card" viewBox="0 0 100 100">
+      <rect x="30" y="18" width="40" height="64" rx="7" fill="#fff" opacity="0.95"/>
+      <circle cx="50" cy="50" r="9" fill-opacity="0" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+const GAMES = [{"id": 1, "ko": "카탄", "en": "Catan", "cats": ["family"], "players": "3-4인", "time": "60-90분", "diff": "중하", "review": "섬의 자원을 손에 쥔 사람이 곧 협상 테이블의 주인이 됩니다. 주사위 운과 거래 감각이 반반씩 승부를 가르는, 보드게임 입문의 기준점 같은 게임입니다.", "bgg": null}, {"id": 2, "ko": "카르카손", "en": "Carcassonne", "cats": ["family"], "players": "2-5인", "time": "35-45분", "diff": "하", "review": "타일을 이어 붙일 때마다 지형이 눈앞에서 자라나는 게 재미의 전부입니다. 규칙이 단순해서 처음 만나는 사람과도 바로 시작할 수 있습니다.", "bgg": null}, {"id": 3, "ko": "티켓 투 라이드", "en": "Ticket to Ride", "cats": ["family"], "players": "2-5인", "time": "30-60분", "diff": "하", "review": "기차 카드를 모아 노선을 잇는 단순한 목표지만, 남이 내 경로를 가로챌까 조마조마한 긴장감이 계속됩니다.", "bgg": null}, {"id": 4, "ko": "스플렌더", "en": "Splendor", "cats": ["family", "card"], "players": "2-4인", "time": "30분", "diff": "하", "review": "보석 카드를 모아 다음 구매를 유리하게 만드는 엔진 빌딩의 첫 관문. 규칙은 5분 안에 설명되지만 판마다 다른 흐름이 나옵니다.", "bgg": null}, {"id": 5, "ko": "아줄", "en": "Azul", "cats": ["family", "abstract"], "players": "2-4인", "time": "30-45분", "diff": "하", "review": "타일을 골라 담을 때는 예쁘고, 정산할 때는 냉정해지는 패턴 게임. 완성된 벽을 보는 만족감이 큽니다.", "bgg": null}, {"id": 6, "ko": "딕싯", "en": "Dixit", "cats": ["party"], "players": "3-6인", "time": "30분", "diff": "하", "review": "모호한 그림 카드 한 장으로 서로 다른 해석을 즐기는 게임. 말이 없어도 분위기가 채워지는 파티용 필수템입니다.", "bgg": null}, {"id": 7, "ko": "코드네임", "en": "Codenames", "cats": ["party"], "players": "2-8인", "time": "15분", "diff": "하", "review": "한 단어로 여러 카드를 동시에 가리켜야 하는 스파이마스터의 고민이 게임의 전부. 팀 단위 눈치싸움이 핵심입니다.", "bgg": null}, {"id": 8, "ko": "뱅!", "en": "Bang!", "cats": ["party"], "players": "4-7인", "time": "20-40분", "diff": "중하", "review": "보안관, 부관, 무법자, 배신자로 나뉘어 정체를 숨기고 총을 겨누는 웨스턴 블러핑 게임입니다.", "bgg": null}, {"id": 9, "ko": "하나비", "en": "Hanabi", "cats": ["coop", "card"], "players": "2-5인", "time": "25분", "diff": "중", "review": "내 카드를 나만 못 보는 상태에서 힌트만으로 팀을 이끄는 협력 게임. 협력 장르의 본질만 남긴 미니멀한 구성이 특징입니다.", "bgg": null}, {"id": 10, "ko": "팬데믹", "en": "Pandemic", "cats": ["coop", "family"], "players": "2-4인", "time": "45분", "diff": "중", "review": "전 세계에 퍼진 질병을 함께 막아내는 협력 게임의 정석. 역할 분담과 동선 설계가 승패를 가릅니다.", "bgg": null}, {"id": 11, "ko": "스카이팀", "en": "Sky Team", "cats": ["coop"], "players": "2인", "time": "20분", "diff": "하", "review": "조종사와 부조종사가 되어 말없이 주사위를 배치해 착륙시키는 2인 협력 게임. 짧고 밀도 높은 협력의 재미가 있습니다.", "bgg": null}, {"id": 12, "ko": "더 크루", "en": "The Crew: The Quest for Planet Nine", "cats": ["coop", "card"], "players": "2-5인", "time": "20분", "diff": "하", "review": "트릭테이킹에 협력을 얹은 카드게임. 서로 손패를 보지 못한 채 임무를 완수해야 합니다.", "bgg": null}, {"id": 13, "ko": "저스트 원", "en": "Just One", "cats": ["party", "coop"], "players": "3-7인", "time": "20분", "diff": "하", "review": "한 단어를 맞히기 위해 팀원들이 각자 힌트를 적지만, 겹치는 힌트는 자동 탈락. 의외로 서로의 사고방식을 알게 되는 게임입니다.", "bgg": null}, {"id": 14, "ko": "더 마인드", "en": "The Mind", "cats": ["coop", "card"], "players": "2-4인", "time": "20분", "diff": "중", "review": "숫자 카드를 대화 없이 순서대로 내야 하는, 말 그대로 텔레파시가 필요한 협력 카드게임입니다.", "bgg": null}, {"id": 15, "ko": "이스탄불", "en": "Istanbul", "cats": ["family"], "players": "2-5인", "time": "40-60분", "diff": "중", "review": "상인이 되어 일꾼을 옮기고 최적 경로를 짜는 게임. 운의 비중이 낮아 매 판이 예측 가능하면서도 최적화의 쾌감이 큽니다.", "bgg": null}, {"id": 16, "ko": "사그라다", "en": "Sagrada", "cats": ["family", "abstract"], "players": "1-4인", "time": "30-45분", "diff": "중하", "review": "주사위를 스테인드글라스 창에 배치하는 퍼즐 게임. 색과 숫자 제약을 동시에 맞춰야 해서 완성됐을 때 눈으로 확인하는 만족감이 큽니다.", "bgg": null}, {"id": 17, "ko": "쿼리도", "en": "Quoridor", "cats": ["abstract", "family"], "players": "2-4인", "time": "15-20분", "diff": "하", "review": "벽을 세워 상대의 길을 막으면서 내 길을 여는 두뇌싸움. 규칙은 단순하지만 수읽기는 진지합니다.", "bgg": null}, {"id": 18, "ko": "산토리니", "en": "Santorini", "cats": ["abstract"], "players": "2-4인", "time": "20-30분", "diff": "중", "review": "건물을 쌓고 올라가 승리하는 추상 전략. 신 카드로 각 플레이어에게 고유 능력을 부여해 매판 다른 전략이 나옵니다.", "bgg": null}, {"id": 19, "ko": "오니타마", "en": "Onitama", "cats": ["abstract"], "players": "2인", "time": "15분", "diff": "중", "review": "5장의 카드가 곧 이동 규칙이 되는 미니멀 추상 전략. 장기말처럼 움직이지만 매판 규칙이 달라집니다.", "bgg": null}, {"id": 20, "ko": "하이브", "en": "Hive", "cats": ["abstract"], "players": "2인", "time": "20분", "diff": "중", "review": "보드 없이 곤충 타일만으로 상대 여왕벌을 포위하는 추상 전략. 체스보다 가볍지만 수 싸움은 깊습니다.", "bgg": null}, {"id": 21, "ko": "클랭크!", "en": "Clank!", "cats": ["deck"], "players": "2-4인", "time": "60분", "diff": "중", "review": "덱빌딩 위에 던전 탐험과 탈출 타이밍을 얹은 게임. 카드를 잘못 짜면 곧바로 위험해지는 구조라 결과가 직관적으로 체감됩니다.", "bgg": null}, {"id": 22, "ko": "도미니언", "en": "Dominion", "cats": ["deck", "card"], "players": "2-4인", "time": "30분", "diff": "중", "review": "덱빌딩 장르를 만든 원조. 카드를 사고 다듬으며 효율을 극대화하는 재미의 교과서입니다.", "bgg": null}, {"id": 23, "ko": "테라포밍 마스", "en": "Terraforming Mars", "cats": ["heavy"], "players": "1-5인", "time": "120분", "diff": "상", "review": "화성을 개척하며 여러 프로젝트 카드를 조합해 엔진을 키우는 헤비 유로게임의 대표작입니다.", "bgg": 8.0}, {"id": 24, "ko": "브라스: 버밍엄", "en": "Brass: Birmingham", "cats": ["heavy"], "players": "2-4인", "time": "90-120분", "diff": "상", "review": "운하와 철도, 시장 타이밍을 다루는 경제 게임. 헤비 유로게임 팬들 사이에서 최상위권으로 꼽히는 완성도를 갖췄습니다.", "bgg": 7.95}, {"id": 25, "ko": "아크 노바", "en": "Ark Nova", "cats": ["heavy", "deck"], "players": "1-4인", "time": "90-150분", "diff": "상", "review": "동물원을 설계하는 덱빌딩+타일 게임. 액션 업그레이드 시스템이 장르 내에서 가장 깔끔하다는 평가를 받습니다.", "bgg": null}, {"id": 26, "ko": "그레이트 웨스턴 트레일", "en": "Great Western Trail", "cats": ["heavy"], "players": "2-4인", "time": "90-150분", "diff": "상", "review": "소몰이 경로를 반복 이동하며 덱과 지형을 동시에 발전시키는 헤비 유로게임. 하드코어 팬층에서 꾸준히 언급됩니다.", "bgg": null}, {"id": 27, "ko": "아그리콜라", "en": "Agricola", "cats": ["heavy"], "players": "1-5인", "time": "90-150분", "diff": "상", "review": "밥 먹이기의 압박 속에서 농장을 키워가는 게임. 끝났을 때 완성된 농장을 보는 성취감이 큽니다.", "bgg": null}, {"id": 28, "ko": "푸에르토리코", "en": "Puerto Rico", "cats": ["heavy"], "players": "3-5인", "time": "90-150분", "diff": "상", "review": "교역과 건설로 총독이 되는 게임. 20년 넘게 헤비 유로게임의 기준점으로 남아 있습니다.", "bgg": 8.0}, {"id": 29, "ko": "글룸헤이븐", "en": "Gloomhaven", "cats": ["heavy", "coop"], "players": "1-4인", "time": "90-150분", "diff": "상", "review": "캠페인 형식의 협력 던전 크롤러. 종족 비대칭과 카드 기반 전투 시스템이 결합된 초대형 박스 게임입니다.", "bgg": 8.08}, {"id": 30, "ko": "루트", "en": "Root", "cats": ["heavy"], "players": "2-4인", "time": "60-90분", "diff": "상", "review": "각 진영이 완전히 다른 규칙으로 싸우는 비대칭 워게임. 귀여운 동물 테마와 진지한 전략이 공존합니다.", "bgg": null}, {"id": 31, "ko": "스피릿 아일랜드", "en": "Spirit Island", "cats": ["heavy", "coop"], "players": "1-4인", "time": "90-120분", "diff": "상", "review": "섬의 정령이 되어 침략자를 몰아내는 협력 게임. 팬데믹류보다 훨씬 무겁고 전략적인 협력을 원할 때 추천됩니다.", "bgg": null}, {"id": 32, "ko": "에버델", "en": "Everdell", "cats": ["heavy", "family"], "players": "1-4인", "time": "40-80분", "diff": "중상", "review": "동물 마을을 짓는 엔진 빌딩 게임. 화려한 아트워크와 탄탄한 시스템이 균형을 이룹니다.", "bgg": null}, {"id": 33, "ko": "윙스팬", "en": "Wingspan", "cats": ["family", "heavy"], "players": "1-5인", "time": "40-70분", "diff": "중", "review": "새 카드를 모아 서식지를 채우는 카드 드리븐 엔진 빌딩. 가벼운 규칙과 묵직한 만족감을 동시에 줍니다.", "bgg": null}, {"id": 34, "ko": "콩코르디아", "en": "Concordia", "cats": ["heavy"], "players": "2-5인", "time": "90-120분", "diff": "중상", "review": "로마 상인이 되어 도시를 확장하는 카드 기반 경제 게임. 전투 없이도 팽팽한 긴장감을 유지합니다.", "bgg": null}, {"id": 35, "ko": "비티컬처", "en": "Viticulture", "cats": ["heavy"], "players": "2-6인", "time": "45-90분", "diff": "중상", "review": "포도밭을 가꾸고 와인을 만드는 일꾼 배치 게임. 계절 순환 구조가 몰입감을 더합니다.", "bgg": null}, {"id": 36, "ko": "워터딥의 영주들", "en": "Lords of Waterdeep", "cats": ["heavy"], "players": "2-5인", "time": "60-120분", "diff": "중", "review": "던전앤드래곤 세계관의 일꾼 배치 게임. 퀘스트를 완수하며 영향력을 키웁니다.", "bgg": null}, {"id": 37, "ko": "스몰월드", "en": "Small World", "cats": ["family"], "players": "2-5인", "time": "40-80분", "diff": "중하", "review": "여러 종족을 갈아타며 영토를 넓히는 게임. 한 종족에 안주할 수 없는 구조가 계속 결정을 강요합니다.", "bgg": null}, {"id": 38, "ko": "킹도미노", "en": "Kingdomino", "cats": ["family"], "players": "2-4인", "time": "15-20분", "diff": "하", "review": "도미노처럼 타일을 이어 붙여 왕국을 만드는 초경량 전략 게임. 규칙이 쉬워 아이와도 바로 할 수 있습니다.", "bgg": null}, {"id": 39, "ko": "패치워크", "en": "Patchwork", "cats": ["family"], "players": "2인", "time": "15-30분", "diff": "중하", "review": "단추를 모아 조각 천을 사서 내 판을 채우는 2인 전용 게임. 데이트용 보드게임으로 자주 언급됩니다.", "bgg": null}, {"id": 40, "ko": "포토신세시스", "en": "Photosynthesis", "cats": ["family"], "players": "2-4인", "time": "30-60분", "diff": "중하", "review": "해가 도는 방향에 맞춰 나무를 심고 그림자를 다투는 게임. 시각적으로도 아름다운 성장 시뮬레이션입니다.", "bgg": null}, {"id": 41, "ko": "테라 미스티카", "en": "Terra Mystica", "cats": ["heavy"], "players": "2-5인", "time": "90-150분", "diff": "상", "review": "서로 다른 종족이 지형을 개조하며 확장하는 헤비 유로게임. 가이아 프로젝트의 전신입니다.", "bgg": null}, {"id": 42, "ko": "카멜업", "en": "Camel Up", "cats": ["party"], "players": "2-8인", "time": "20-30분", "diff": "하", "review": "낙타 경주에 베팅하는 파티 게임. 순위가 시시각각 뒤집혀서 술렁임이 끊이지 않습니다.", "bgg": null}, {"id": 43, "ko": "킹 오브 도쿄", "en": "King of Tokyo", "cats": ["party"], "players": "2-6인", "time": "30분", "diff": "하", "review": "괴수가 되어 도쿄를 파괴하며 주사위를 굴리는 가벼운 파티 게임입니다.", "bgg": null}, {"id": 44, "ko": "스시고", "en": "Sushi Go", "cats": ["family", "card"], "players": "2-5인", "time": "15분", "diff": "하", "review": "초밥 카드를 드래프트해 세트를 완성하는 초경량 카드게임. 규칙 설명이 1분이면 끝납니다.", "bgg": null}, {"id": 45, "ko": "러브레터", "en": "Love Letter", "cats": ["party", "card"], "players": "2-4인", "time": "15-20분", "diff": "하", "review": "카드 단 16장으로 진행되는 추리형 카드게임. 한 판이 5분도 안 걸려 여러 판을 몰아서 즐기기 좋습니다.", "bgg": null}, {"id": 46, "ko": "쿠데타", "en": "Coup", "cats": ["party", "card"], "players": "2-6인", "time": "15분", "diff": "하", "review": "존재하지도 않는 능력을 있는 척 우기는 블러핑 카드게임. 허세와 심리전이 전부입니다.", "bgg": null}, {"id": 47, "ko": "시크릿 히틀러", "en": "Secret Hitler", "cats": ["party"], "players": "5-10인", "time": "45분", "diff": "중", "review": "정체를 숨긴 채 정책을 통과시키는 사회적 추리 게임. 대규모 인원에서 몰입감이 특히 좋습니다.", "bgg": null}, {"id": 48, "ko": "먼치킨", "en": "Munchkin", "cats": ["party", "card"], "players": "3-6인", "time": "60-120분", "diff": "중하", "review": "몬스터를 잡고 레벨업하는 걸 풍자한 카드게임. 서로 방해하는 재미가 핵심입니다.", "bgg": null}, {"id": 49, "ko": "익스플로딩 키튼", "en": "Exploding Kittens", "cats": ["party", "card"], "players": "2-5인", "time": "15분", "diff": "하", "review": "폭탄 고양이 카드를 뽑지 않으려 눈치를 보는 러시안룰렛형 카드게임입니다.", "bgg": null}, {"id": 50, "ko": "트와일라잇 스트러글", "en": "Twilight Struggle", "cats": ["war"], "players": "2인", "time": "120-180분", "diff": "상", "review": "냉전기 미소 대립을 카드 기반으로 재현한 2인 워게임. 역사 시뮬레이션 게임의 대표작으로 꼽힙니다.", "bgg": null}, {"id": 51, "ko": "스타워즈: 반란", "en": "Star Wars: Rebellion", "cats": ["war"], "players": "2-4인", "time": "180분", "diff": "상", "review": "은하계 전체를 무대로 한 비대칭 워게임. 반란군은 숨고 제국은 찾아내야 합니다.", "bgg": null}, {"id": 52, "ko": "반지의 제왕 워 오브 더 링", "en": "War of the Ring", "cats": ["war"], "players": "2-4인", "time": "150-180분", "diff": "상", "review": "반지의 제왕 세계관을 그대로 옮긴 대형 워게임. 진영별 목표가 완전히 다릅니다.", "bgg": null}, {"id": 53, "ko": "블러드 레이지", "en": "Blood Rage", "cats": ["heavy"], "players": "2-4인", "time": "60-90분", "diff": "중상", "review": "북유럽 신화 속 라그나로크를 배경으로 한 지역 통제 게임. 전투에서 지는 것도 전략이 되는 구조입니다.", "bgg": null}, {"id": 54, "ko": "케메트", "en": "Kemet", "cats": ["heavy"], "players": "2-5인", "time": "90분", "diff": "상", "review": "고대 이집트 신화 배경의 지역 통제 전투 게임. 짧고 격렬한 전투가 특징입니다.", "bgg": null}, {"id": 55, "ko": "이니스", "en": "Inis", "cats": ["heavy"], "players": "2-4인", "time": "60-90분", "diff": "중상", "review": "켈트 신화를 배경으로 한 드래프트 기반 지역 통제 게임. 정복보다 명성을 쌓는 쪽이 유리할 수 있습니다.", "bgg": null}, {"id": 56, "ko": "라이징 선", "en": "Rising Sun", "cats": ["heavy"], "players": "3-5인", "time": "90-150분", "diff": "상", "review": "일본 신화 배경의 외교·전투 게임. 동맹과 배신이 반복되는 협상형 헤비 게임입니다.", "bgg": null}, {"id": 57, "ko": "파이브 트라이브즈", "en": "Five Tribes", "cats": ["heavy"], "players": "2-4인", "time": "40-80분", "diff": "중상", "review": "아라비안나이트 배경의 말 이동 퍼즐 게임. 협상과 계산이 동시에 필요합니다.", "bgg": null}, {"id": 58, "ko": "트라얀", "en": "Trajan", "cats": ["heavy"], "players": "2-4인", "time": "90-120분", "diff": "상", "review": "만칼라 방식의 자원 배분을 로마 시대 통치에 접목한 게임입니다.", "bgg": null}, {"id": 59, "ko": "르아브르", "en": "Le Havre", "cats": ["heavy"], "players": "1-5인", "time": "90-210분", "diff": "상", "review": "항구 도시를 경영하는 자원 관리 게임. 시간이 곧 자원이 되는 구조가 특징입니다.", "bgg": null}, {"id": 60, "ko": "촐킨", "en": "Tzolk'in: The Mayan Calendar", "cats": ["heavy"], "players": "2-4인", "time": "90-120분", "diff": "상", "review": "톱니바퀴가 돌아가는 보드 위에서 일꾼을 배치하는 마야 문명 게임입니다.", "bgg": null}, {"id": 61, "ko": "카베르나", "en": "Caverna", "cats": ["heavy"], "players": "1-7인", "time": "30-150분", "diff": "상", "review": "드워프 마을을 키우는 아그리콜라의 확장판 격 게임. 선택지가 훨씬 방대합니다.", "bgg": null}, {"id": 62, "ko": "시간의 흐름", "en": "Through the Ages", "cats": ["heavy"], "players": "2-4인", "time": "120-240분", "diff": "상", "review": "문명을 처음부터 끝까지 발전시키는 초헤비급 문명 게임입니다.", "bgg": null}, {"id": 63, "ko": "푸드체인 매그네이트", "en": "Food Chain Magnate", "cats": ["heavy"], "players": "2-5인", "time": "120-240분", "diff": "상", "review": "패스트푸드 체인을 확장하는 경영 게임. 초반 실수가 후반까지 이어지는 냉정한 설계로 유명합니다.", "bgg": null}, {"id": 64, "ko": "바라지", "en": "Barrage", "cats": ["heavy"], "players": "2-4인", "time": "60-100분", "diff": "상", "review": "수력 발전소를 건설하는 자원 관리 게임. 물의 흐름을 두고 벌이는 견제가 치열합니다.", "bgg": null}, {"id": 65, "ko": "온 마스", "en": "On Mars", "cats": ["heavy"], "players": "1-4인", "time": "150-240분", "diff": "상", "review": "화성 식민지를 건설하는 초헤비급 개척 게임입니다.", "bgg": null}, {"id": 66, "ko": "가이아 프로젝트", "en": "Gaia Project", "cats": ["heavy"], "players": "1-4인", "time": "60-150분", "diff": "상", "review": "테라 미스티카의 SF 버전. 종족별 비대칭 능력으로 우주를 개척합니다.", "bgg": 7.96}, {"id": 67, "ko": "언더워터 시티즈", "en": "Underwater Cities", "cats": ["heavy"], "players": "1-4인", "time": "90-120분", "diff": "상", "review": "해저 도시를 건설하는 카드 기반 확장 게임입니다.", "bgg": null}, {"id": 68, "ko": "마이시티", "en": "My City", "cats": ["family"], "players": "2-4인", "time": "30분", "diff": "하", "review": "판이 거듭될수록 규칙이 바뀌는 레거시형 타일 게임. 캠페인이 끝나면 도시가 완전히 달라져 있습니다.", "bgg": null}, {"id": 69, "ko": "도르프로만틱", "en": "Dorfromantik", "cats": ["family", "coop"], "players": "1-6인", "time": "30-60분", "diff": "하", "review": "육각 타일을 이어 마을 풍경을 만드는 힐링형 게임. 협력과 솔로 모두 가능합니다.", "bgg": null}, {"id": 70, "ko": "히트: 페달 투 더 메탈", "en": "Heat: Pedal to the Metal", "cats": ["family", "deck"], "players": "1-6인", "time": "30-60분", "diff": "중하", "review": "자동차 레이싱을 카드로 구현한 게임. 과열 관리가 핵심 전략입니다.", "bgg": null}, {"id": 71, "ko": "마이크로매크로: 크라임 시티", "en": "MicroMacro: Crime City", "cats": ["coop", "family"], "players": "1-4인", "time": "15-45분", "diff": "하", "review": "커다란 지도 위에서 사건을 함께 추적하는 협력 추리 게임. 대화 없이도 몰입감이 큽니다.", "bgg": null}, {"id": 72, "ko": "미스터리움", "en": "Mysterium", "cats": ["coop", "party"], "players": "2-6인", "time": "40분", "diff": "중", "review": "유령과 형사로 나뉜 비대칭 협력 게임. 유령이 낸 단서를 형사들이 함께 풀어갑니다.", "bgg": null}, {"id": 73, "ko": "판타지 렐름", "en": "Fantasy Realms", "cats": ["card"], "players": "2-6인", "time": "20분", "diff": "하", "review": "카드 조합에 따라 점수가 극적으로 바뀌는 드래프트 카드게임입니다.", "bgg": null}, {"id": 74, "ko": "바퀴벌레 포커", "en": "Cockroach Poker", "cats": ["party", "card"], "players": "2-6인", "time": "20분", "diff": "하", "review": "바퀴벌레, 쥐 같은 혐오 카드를 서로 떠넘기는 블러핑 게임입니다.", "bgg": null}, {"id": 75, "ko": "원 나이트 얼티밋 웨어울프", "en": "One Night Ultimate Werewolf", "cats": ["party"], "players": "3-10인", "time": "10분", "diff": "중하", "review": "단 하룻밤 만에 끝나는 초압축 마피아류 게임. 진행이 빨라 여러 번 반복하기 좋습니다.", "bgg": null}, {"id": 76, "ko": "콘셉트", "en": "Concept", "cats": ["party"], "players": "4-12인", "time": "40분", "diff": "하", "review": "아이콘만으로 단어를 설명하는 팀 게임. 말이 아닌 그림으로 소통해야 합니다.", "bgg": null}, {"id": 77, "ko": "사보퇴르", "en": "Saboteur", "cats": ["party"], "players": "3-10인", "time": "30분", "diff": "하", "review": "숨은 배신자를 찾아내며 금맥을 캐는 카드게임입니다.", "bgg": null}, {"id": 78, "ko": "인지니어스", "en": "Ingenious", "cats": ["abstract"], "players": "1-4인", "time": "30-45분", "diff": "하", "review": "타일을 놓아 색깔별 점수를 균형 있게 쌓아야 하는 추상 전략 게임입니다.", "bgg": null}, {"id": 79, "ko": "안도르의 전설", "en": "Legends of Andor", "cats": ["coop"], "players": "2-4인", "time": "60-90분", "diff": "중", "review": "이야기 중심의 협력 판타지 게임. 전투와 서사가 함께 진행됩니다.", "bgg": null}, {"id": 80, "ko": "듄: 임페리움", "en": "Dune: Imperium", "cats": ["heavy", "deck"], "players": "1-4인", "time": "60-120분", "diff": "중상", "review": "덱빌딩과 일꾼 배치를 결합한 게임. 듄 세계관의 정치 싸움을 그대로 담았습니다.", "bgg": null}, {"id": 81, "ko": "해리포터: 호그와트 전투", "en": "Harry Potter: Hogwarts Battle", "cats": ["deck", "family"], "players": "2-4인", "time": "30-60분", "diff": "중하", "review": "협력형 덱빌딩 게임. 시나리오가 진행될수록 덱이 성장합니다.", "bgg": null}, {"id": 82, "ko": "반지의 제왕", "en": "The Lord of the Rings", "cats": ["coop"], "players": "2-5인", "time": "60-90분", "diff": "중", "review": "호빗이 되어 함께 반지를 파괴하러 가는 협력 게임의 고전입니다.", "bgg": null}, {"id": 83, "ko": "엘도라도를 향한 질주", "en": "The Quest for El Dorado", "cats": ["family", "deck"], "players": "2-4인", "time": "30-60분", "diff": "하", "review": "덱빌딩과 레이스를 결합한 게임. 정글을 먼저 통과하는 쪽이 승리합니다.", "bgg": null}, {"id": 84, "ko": "콜트 익스프레스", "en": "Colt Express", "cats": ["family"], "players": "2-6인", "time": "40분", "diff": "하", "review": "움직이는 기차를 터는 서부극 게임. 입체 기차 모형 위에서 진행됩니다.", "bgg": null}, {"id": 85, "ko": "보난자", "en": "Bohnanza", "cats": ["family"], "players": "2-7인", "time": "45분", "diff": "하", "review": "손패 순서를 바꿀 수 없는 콩 재배·거래 게임. 협상 없이는 이길 수 없습니다.", "bgg": null}, {"id": 86, "ko": "포트 로얄", "en": "Port Royal", "cats": ["family", "card"], "players": "2-5인", "time": "20-50분", "diff": "하", "review": "카리브해 무역선을 운영하는 푸시유어럭 카드게임입니다.", "bgg": null}, {"id": 87, "ko": "쿼클", "en": "Qwirkle", "cats": ["family", "abstract"], "players": "2-4인", "time": "45분", "diff": "하", "review": "색과 모양이 같은 타일을 이어 붙이는 도미노형 추상 게임입니다.", "bgg": null}, {"id": 88, "ko": "엘드리치 호러", "en": "Eldritch Horror", "cats": ["coop"], "players": "1-8인", "time": "120-240분", "diff": "상", "review": "전 세계를 무대로 고대의 존재에 맞서는 협력 게임. 진행이 길고 서사가 깊습니다.", "bgg": null}, {"id": 89, "ko": "7 원더스 듀얼", "en": "7 Wonders Duel", "cats": ["family"], "players": "2인", "time": "30분", "diff": "하", "review": "7 원더스를 2인용으로 재구성한 게임. 카드 배치 구조가 매판 다른 전략을 만듭니다.", "bgg": 8.01}, {"id": 90, "ko": "반지의 제왕: 미들어스로의 여정", "en": "LOTR: Journeys in Middle-Earth", "cats": ["coop", "deck"], "players": "1-5인", "time": "60-120분", "diff": "중상", "review": "앱과 연동되는 협력 게임. 반지의 제왕 세계를 탐험합니다.", "bgg": null}, {"id": 91, "ko": "스톤에이지", "en": "Stone Age", "cats": ["heavy"], "players": "2-4인", "time": "60-90분", "diff": "중", "review": "석기시대 부족을 발전시키는 일꾼 배치 게임의 고전입니다.", "bgg": null}, {"id": 92, "ko": "카토그래퍼스", "en": "Cartographers", "cats": ["family"], "players": "1-100인", "time": "30-45분", "diff": "하", "review": "롤앤라이트 방식으로 지도를 그리는 게임. 인원 제한이 사실상 없습니다.", "bgg": null}, {"id": 93, "ko": "팔레오", "en": "Paleo", "cats": ["coop"], "players": "2-4인", "time": "45-60분", "diff": "중", "review": "석기시대를 배경으로 한 협력 카드게임. 시나리오마다 다른 목표가 주어집니다.", "bgg": null}, {"id": 94, "ko": "텔레스트레이션", "en": "Telestrations", "cats": ["party"], "players": "4-8인", "time": "30분", "diff": "하", "review": "그림과 단어를 번갈아 전달하는 스피드형 전달 게임입니다.", "bgg": null}, {"id": 95, "ko": "페루도", "en": "Perudo", "cats": ["party"], "players": "2-10인", "time": "15-30분", "diff": "하", "review": "주사위 개수를 두고 허풍을 떠는 블러핑 게임입니다.", "bgg": null}, {"id": 96, "ko": "사이드", "en": "Scythe", "cats": ["heavy"], "players": "1-5인", "time": "90-115분", "diff": "상", "review": "1920년대 대체역사 유럽을 배경으로 한 지역 통제 게임. 전투보다 경제가 승부처입니다.", "bgg": null}, {"id": 97, "ko": "마블 챔피언스", "en": "Marvel Champions", "cats": ["deck", "coop"], "players": "1-4인", "time": "45-90분", "diff": "중상", "review": "마블 히어로가 되어 악당과 싸우는 협력형 덱빌딩 카드게임입니다.", "bgg": null}, {"id": 98, "ko": "캣 인 더 박스", "en": "Cat in the Box", "cats": ["card"], "players": "2-5인", "time": "20-40분", "diff": "중하", "review": "카드에 숫자가 없는 트릭테이킹 게임. 색만 보고 값을 스스로 정해야 합니다.", "bgg": null}, {"id": 99, "ko": "테이크 5", "en": "Take 5", "cats": ["party", "card"], "players": "2-10인", "time": "45분", "diff": "하", "review": "점수를 최소화해야 하는 카드 배치 게임. 규칙이 간단해 대인원에서 자주 등장합니다.", "bgg": null}, {"id": 100, "ko": "왁자지껄 클레버", "en": "That's Pretty Clever!", "cats": ["family"], "players": "1-4인", "time": "30분", "diff": "하", "review": "주사위를 굴려 점수판을 채우는 롤앤라이트 게임. 혼자서도 즐길 수 있습니다.", "bgg": null}, {"id": 101, "ko": "카스카디아", "en": "Cascadia", "cats": ["family"], "players": "1-4인", "time": "30-45분", "diff": "하", "review": "타일과 야생동물 토큰을 함께 배치하는 서식지 조성 게임입니다.", "bgg": null}, {"id": 102, "ko": "코드네임 듀엣", "en": "Codenames: Duet", "cats": ["coop", "party"], "players": "2인", "time": "15-30분", "diff": "하", "review": "코드네임을 2인 협력용으로 바꾼 버전. 서로 스파이마스터가 되어 함께 풉니다.", "bgg": null}, {"id": 103, "ko": "카루바", "en": "Karuba", "cats": ["family"], "players": "2-4인", "time": "30-40분", "diff": "하", "review": "탐험가가 정글을 지나 신전을 찾는 타일 레이스 게임입니다.", "bgg": null}, {"id": 104, "ko": "루미큐브", "en": "Rummikub", "cats": ["family"], "players": "2-4인", "time": "20분", "diff": "하", "review": "타일 조합을 만들고 해체하며 먼저 손패를 비우는 국민 게임입니다.", "bgg": null}, {"id": 105, "ko": "다빈치 코드", "en": "Da Vinci Code", "cats": ["abstract"], "players": "2-4인", "time": "20분", "diff": "하", "review": "숫자 추론으로 상대의 타일을 맞히는 국내 디자이너의 대표작입니다.", "bgg": null}, {"id": 106, "ko": "클루", "en": "Cluedo", "cats": ["abstract"], "players": "3-6인", "time": "45분", "diff": "중하", "review": "저택 어딘가에 숨은 범인, 흉기, 장소를 추리하는 고전 추리 게임입니다.", "bgg": null}, {"id": 107, "ko": "모노폴리", "en": "Monopoly", "cats": ["family"], "players": "2-8인", "time": "60-180분", "diff": "중하", "review": "부동산을 사고팔며 파산시키는 협상 게임의 원조 격 고전입니다.", "bgg": null}, {"id": 108, "ko": "젠가", "en": "Jenga", "cats": ["party"], "players": "1-8인", "time": "10-20분", "diff": "하", "review": "블록을 빼서 위에 쌓는 균형 게임. 손이 떨리기 시작하면 이미 진 것과 다름없습니다.", "bgg": null}, {"id": 109, "ko": "우노", "en": "UNO", "cats": ["party", "card"], "players": "2-10인", "time": "15-30분", "diff": "하", "review": "색과 숫자를 맞춰 손패를 비우는 카드게임의 대명사입니다.", "bgg": null}, {"id": 110, "ko": "할리갈리", "en": "Halli Galli", "cats": ["party", "family"], "players": "2-6인", "time": "15분", "diff": "하", "review": "같은 과일 5개가 모이면 재빨리 종을 쳐야 하는 반응속도 게임입니다.", "bgg": null}, {"id": 111, "ko": "킹덤 데스: 몬스터", "en": "Kingdom Death: Monster", "cats": ["heavy"], "players": "1-4인", "time": "120-240분", "diff": "상", "review": "극악의 난이도로 유명한 다크 판타지 캠페인 게임. 헤비 게이머 사이에서 상징적인 존재입니다.", "bgg": null}, {"id": 112, "ko": "네메시스", "en": "Nemesis", "cats": ["heavy", "coop"], "players": "1-5인", "time": "90-150분", "diff": "상", "review": "우주선 안에서 괴생명체를 피해 생존해야 하는 반협력 게임입니다.", "bgg": null}, {"id": 113, "ko": "맨션 오브 매드니스", "en": "Mansions of Madness", "cats": ["coop"], "players": "1-5인", "time": "60-120분", "diff": "상", "review": "앱과 연동되는 협력 호러 어드벤처 게임입니다.", "bgg": null}, {"id": 114, "ko": "공포의 저택", "en": "Betrayal at House on the Hill", "cats": ["coop", "party"], "players": "3-6인", "time": "60분", "diff": "중", "review": "탐험 중 누군가 배신자로 돌변하는 협력형 호러 게임입니다.", "bgg": null}, {"id": 115, "ko": "금지된 섬", "en": "Forbidden Island", "cats": ["coop", "family"], "players": "2-4인", "time": "30분", "diff": "하", "review": "가라앉는 섬에서 보물을 챙겨 탈출하는 가벼운 협력 게임입니다.", "bgg": null}, {"id": 116, "ko": "금지된 사막", "en": "Forbidden Desert", "cats": ["coop", "family"], "players": "2-5인", "time": "45분", "diff": "중하", "review": "모래에 파묻히는 비행선을 찾아 탈출하는 협력 게임입니다.", "bgg": null}, {"id": 117, "ko": "고스트 스토리", "en": "Ghost Stories", "cats": ["coop"], "players": "1-4인", "time": "60분", "diff": "상", "review": "마을을 지키는 도사들이 유령 군단에 맞서는 고난도 협력 게임입니다.", "bgg": null}, {"id": 118, "ko": "로빈슨 크루소", "en": "Robinson Crusoe", "cats": ["coop", "heavy"], "players": "1-4인", "time": "90-150분", "diff": "상", "review": "무인도에서 생존해야 하는 스토리 중심의 협력 게임입니다.", "bgg": null}, {"id": 119, "ko": "테오티우아칸", "en": "Teotihuacan", "cats": ["heavy"], "players": "1-4인", "time": "90-150분", "diff": "상", "review": "주사위를 성장시켜가며 피라미드를 짓는 헤비 유로게임입니다.", "bgg": null}, {"id": 120, "ko": "아나크로니", "en": "Anachrony", "cats": ["heavy"], "players": "1-4인", "time": "60-150분", "diff": "상", "review": "시간여행 개념을 접목한 헤비급 자원 관리 게임입니다.", "bgg": null}, {"id": 121, "ko": "레스 아르카나", "en": "Res Arcana", "cats": ["heavy", "card"], "players": "2-4인", "time": "30-45분", "diff": "중상", "review": "마법사가 되어 유물과 마나를 다투는 카드 기반 전략 게임입니다.", "bgg": null}, {"id": 122, "ko": "공포의 벽", "en": "Betrayal Legacy", "cats": ["coop"], "players": "3-5인", "time": "60-90분", "diff": "중상", "review": "캠페인이 이어지며 마을의 역사가 쌓이는 레거시형 협력 호러 게임입니다.", "bgg": null}, {"id": 123, "ko": "아컴호러 카드게임", "en": "Arkham Horror: The Card Game", "cats": ["deck", "coop"], "players": "1-4인", "time": "60-120분", "diff": "상", "review": "캠페인마다 덱을 성장시키는 협력형 크툴루 카드게임입니다.", "bgg": null}, {"id": 124, "ko": "고대의 공포", "en": "Eldritch Horror", "cats": ["coop"], "players": "1-8인", "time": "120-240분", "diff": "상", "review": "전 세계를 무대로 신화적 위협에 맞서는 대형 협력 게임입니다.", "bgg": null}];
+const RANKING = [{"rank": 1, "ko": "코드네임", "en": "Codenames", "players": "2-8인", "time": "15분", "cats": ["party"]}, {"rank": 2, "ko": "카스카디아", "en": "Cascadia", "players": "1-4인", "time": "30-45분", "cats": ["family"]}, {"rank": 3, "ko": "코드네임 듀엣", "en": "Codenames: Duet", "players": "2인", "time": "15-30분", "cats": ["coop", "party"]}, {"rank": 4, "ko": "저스트 원", "en": "Just One", "players": "3-7인", "time": "20-60분", "cats": ["coop", "party"]}, {"rank": 5, "ko": "아줄", "en": "Azul", "players": "2-4인", "time": "30-45분", "cats": ["family"]}, {"rank": 6, "ko": "딕싯", "en": "Dixit", "players": "3-6인", "time": "30분", "cats": ["party"]}, {"rank": 7, "ko": "왁자지껄 클레버", "en": "The Quack of Quedlinburg", "players": "2-4인", "time": "45분", "cats": ["family", "deck"]}, {"rank": 8, "ko": "왁자지껄 클레버(주사위)", "en": "That's Pretty Clever!", "players": "1-4인", "time": "30분", "cats": ["family"]}, {"rank": 9, "ko": "티켓 투 라이드: 유럽", "en": "Ticket to Ride: Europe", "players": "2-5인", "time": "30-60분", "cats": ["family"]}, {"rank": 10, "ko": "카루바", "en": "Karuba", "players": "2-4인", "time": "30-40분", "cats": ["family"]}, {"rank": 11, "ko": "테이크 5", "en": "Take 5", "players": "2-10인", "time": "45분", "cats": ["party"]}, {"rank": 12, "ko": "윙스팬", "en": "Wingspan", "players": "1-5인", "time": "40-70분", "cats": ["family", "heavy"]}, {"rank": 13, "ko": "바퀴벌레 포커", "en": "Cockroach Poker", "players": "2-6인", "time": "20분", "cats": ["party"]}, {"rank": 14, "ko": "원 나이트 얼티밋 웨어울프", "en": "One Night Ultimate Werewolf", "players": "3-10인", "time": "10분", "cats": ["party"]}, {"rank": 15, "ko": "7 원더스", "en": "7 Wonders", "players": "2-7인", "time": "30분", "cats": ["family"]}, {"rank": 16, "ko": "더 마인드", "en": "The Mind", "players": "2-4인", "time": "20분", "cats": ["coop"]}, {"rank": 17, "ko": "콘셉트", "en": "Concept", "players": "4-12인", "time": "40분", "cats": ["party"]}, {"rank": 18, "ko": "사보퇴르", "en": "Saboteur", "players": "3-10인", "time": "30분", "cats": ["party"]}, {"rank": 19, "ko": "인지니어스", "en": "Ingenious", "players": "1-4인", "time": "30-45분", "cats": ["abstract"]}, {"rank": 20, "ko": "안도르의 전설", "en": "Legends of Andor", "players": "2-4인", "time": "60-90분", "cats": ["coop"]}, {"rank": 21, "ko": "더 크루", "en": "The Crew: The Quest for Planet Nine", "players": "2-5인", "time": "20분", "cats": ["coop"]}, {"rank": 22, "ko": "듄: 임페리움", "en": "Dune: Imperium", "players": "1-4인", "time": "60-120분", "cats": ["heavy", "deck"]}, {"rank": 23, "ko": "스카이팀", "en": "Sky Team", "players": "2인", "time": "20분", "cats": ["coop"]}, {"rank": 24, "ko": "해리포터: 호그와트 전투", "en": "Harry Potter: Hogwarts Battle", "players": "2-4인", "time": "30-60분", "cats": ["deck", "family"]}, {"rank": 25, "ko": "반지의 제왕", "en": "The Lord of the Rings", "players": "2-5인", "time": "60-90분", "cats": ["coop"]}, {"rank": 26, "ko": "엘도라도를 향한 질주", "en": "The Quest for El Dorado", "players": "2-4인", "time": "30-60분", "cats": ["family", "deck"]}, {"rank": 27, "ko": "콜트 익스프레스", "en": "Colt Express", "players": "2-6인", "time": "40분", "cats": ["family"]}, {"rank": 28, "ko": "보난자", "en": "Bohnanza", "players": "2-7인", "time": "45분", "cats": ["family"]}, {"rank": 29, "ko": "마이크로매크로: 크라임 시티", "en": "MicroMacro: Crime City", "players": "1-4인", "time": "15-45분", "cats": ["coop"]}, {"rank": 30, "ko": "히트: 페달 투 더 메탈", "en": "Heat: Pedal to the Metal", "players": "1-6인", "time": "30-60분", "cats": ["family", "deck"]}, {"rank": 31, "ko": "카토그래퍼스", "en": "Cartographers", "players": "1-100인", "time": "30-45분", "cats": ["family"]}, {"rank": 32, "ko": "팔레오", "en": "Paleo", "players": "2-4인", "time": "45-60분", "cats": ["coop"]}, {"rank": 33, "ko": "텔레스트레이션", "en": "Telestrations", "players": "4-8인", "time": "30분", "cats": ["party"]}, {"rank": 34, "ko": "페루도", "en": "Perudo", "players": "2-10인", "time": "15-30분", "cats": ["party"]}, {"rank": 35, "ko": "사이드", "en": "Scythe", "players": "1-5인", "time": "90-115분", "cats": ["heavy"]}, {"rank": 36, "ko": "푸에르토리코", "en": "Puerto Rico", "players": "3-5인", "time": "90-150분", "cats": ["heavy"]}, {"rank": 37, "ko": "포트 로얄", "en": "Port Royal", "players": "2-5인", "time": "20-50분", "cats": ["family"]}, {"rank": 38, "ko": "쿼클", "en": "Qwirkle", "players": "2-4인", "time": "45분", "cats": ["family", "abstract"]}, {"rank": 39, "ko": "마이시티", "en": "My City", "players": "2-4인", "time": "30분", "cats": ["family"]}, {"rank": 40, "ko": "도르프로만틱", "en": "Dorfromantik", "players": "1-6인", "time": "30-60분", "cats": ["family", "coop"]}, {"rank": 41, "ko": "엘드리치 호러", "en": "Eldritch Horror", "players": "1-8인", "time": "120-240분", "cats": ["coop"]}, {"rank": 42, "ko": "가이아 프로젝트", "en": "Gaia Project", "players": "1-4인", "time": "60-150분", "cats": ["heavy"]}, {"rank": 43, "ko": "7 원더스 듀얼", "en": "7 Wonders Duel", "players": "2인", "time": "30분", "cats": ["family"]}, {"rank": 44, "ko": "반지의 제왕: 미들어스로의 여정", "en": "LOTR: Journeys in Middle-Earth", "players": "1-5인", "time": "60-120분", "cats": ["coop", "deck"]}, {"rank": 45, "ko": "팬데믹", "en": "Pandemic", "players": "2-4인", "time": "45분", "cats": ["coop", "family"]}, {"rank": 46, "ko": "판타지 렐름", "en": "Fantasy Realms", "players": "2-6인", "time": "20분", "cats": ["card"]}, {"rank": 47, "ko": "캣 인 더 박스", "en": "Cat in the Box", "players": "2-5인", "time": "20-40분", "cats": ["card"]}, {"rank": 48, "ko": "마블 챔피언스", "en": "Marvel Champions", "players": "1-4인", "time": "45-90분", "cats": ["deck", "coop"]}, {"rank": 49, "ko": "스톤에이지", "en": "Stone Age", "players": "2-4인", "time": "60-90분", "cats": ["heavy"]}, {"rank": 50, "ko": "브라스: 버밍엄", "en": "Brass: Birmingham", "players": "2-4인", "time": "90-120분", "cats": ["heavy"]}];
+
+
+const CAT_KR = {family:"가족",party:"파티",coop:"협력",heavy:"헤비유로",deck:"덱빌딩",abstract:"추상전략",war:"워게임",card:"카드게임"};
+const CAT_COLOR = {
+  family:["var(--c-family)","var(--c-family-d)"],
+  party:["var(--c-party)","var(--c-party-d)"],
+  coop:["var(--c-coop)","var(--c-coop-d)"],
+  heavy:["var(--c-heavy)","var(--c-heavy-d)"],
+  deck:["var(--c-deck)","var(--c-deck-d)"],
+  abstract:["var(--c-abstract)","var(--c-abstract-d)"],
+  war:["var(--c-war)","var(--c-war-d)"],
+  card:["var(--c-card)","var(--c-card-d)"]
+};
+
+function coverFor(game){
+  const primary = game.cats[0];
+  const [c1,c2] = CAT_COLOR[primary] || CAT_COLOR.family;
+  return `background:linear-gradient(150deg, ${c1}, ${c2}); color:${c1};`;
+}
+
+function renderCard(game){
+  const primary = game.cats[0];
+  const style = coverFor(game);
+  const initial = game.ko.charAt(0);
+  const cats = game.cats.map(c => `<span>${CAT_KR[c]}</span>`).join("");
+  const bggSearchUrl = "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" + encodeURIComponent(game.en);
+  const ratingBadge = game.bgg
+    ? `<a class="rating-badge" href="${bggSearchUrl}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/></svg>${game.bgg.toFixed(2)}<span class="rating-source">BGG</span></a>`
+    : `<span class="rating-source">BGG 평점 미확인</span>`;
+  return `
+  <article class="card" data-cats="${game.cats.join(' ')}" data-name="${game.ko} ${game.en}">
+    <div class="cover" style="${style}">
+      <span class="cat-chip">${CAT_KR[primary]}</span>
+      <span class="initial">${initial}</span>
+      <svg class="icon" style="color:${CAT_COLOR[primary][0]}"><use href="#icon-${primary}"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <span class="ko">${game.ko}</span>
+        <span class="en">${game.en}</span>
+      </div>
+      <div class="stat-row"><span>${game.players}</span><span>${game.time}</span><span>${game.diff}</span></div>
+      <p class="card-review">${game.review}</p>
+      <div class="card-cats">${cats}</div>
+      <div class="review-row">${ratingBadge}</div>
+    </div>
+  </article>`;
+}
+
+function renderRankRow(g){
+  const primary = g.cats[0];
+  const cats = g.cats.map(c => `<span>${CAT_KR[c]}</span>`).join("");
+  return `
+  <tr>
+    <td class="rank-num mono">${g.rank}</td>
+    <td class="rank-name"><span class="ko">${g.ko}</span><br><span class="en">${g.en}</span></td>
+    <td><div class="rank-cats">${cats}</div></td>
+    <td class="rank-stats">${g.players} · ${g.time}</td>
+  </tr>`;
+}
+
+const grid = document.getElementById('grid');
+const rankBody = document.getElementById('rank-body');
+const visibleCount = document.getElementById('visible-count');
+const searchInput = document.getElementById('search-input');
+const filterBtns = document.querySelectorAll('.filter-tag');
+
+grid.innerHTML = GAMES.map(renderCard).join('');
+rankBody.innerHTML = RANKING.map(renderRankRow).join('');
+
+let activeCat = 'all';
+
+function applyFilter(){
+  const q = searchInput.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const cats = card.dataset.cats.split(' ');
+    const name = card.dataset.name.toLowerCase();
+    const catOk = activeCat === 'all' || cats.includes(activeCat);
+    const searchOk = q === '' || name.includes(q);
+    const show = catOk && searchOk;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  visibleCount.textContent = visible;
+  const grid = document.getElementById('grid');
+  let empty = grid.querySelector('.empty-state');
+  if (visible === 0){
+    if (!empty){
+      empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.textContent = '조건에 맞는 게임이 없습니다. 다른 검색어나 카테고리를 시도해보세요.';
+      grid.appendChild(empty);
+    }
+  } else if (empty){
+    empty.remove();
+  }
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    applyFilter();
+  });
+});
+searchInput.addEventListener('input', applyFilter);
+</script>
+
+<div class="cookie-banner" id="cookie-banner">
+  <span>이 사이트는 광고 게재 및 이용 통계를 위해 쿠키를 사용합니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에서 확인할 수 있습니다.</span>
+  <button id="cookie-accept">확인했습니다</button>
+</div>
+
+<script>
+  (function(){
+    try{
+      if(!localStorage.getItem('cookieConsent')){
+        document.getElementById('cookie-banner').classList.add('show');
+      }
+    }catch(e){}
+    var btn = document.getElementById('cookie-accept');
+    if(btn){
+      btn.addEventListener('click', function(){
+        try{ localStorage.setItem('cookieConsent','1'); }catch(e){}
+        document.getElementById('cookie-banner').classList.remove('show');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
