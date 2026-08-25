@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>러브레터 리뷰 · 구매 정보 — 보드게임 서가</title>
+<meta name="description" content="러브레터(Love Letter) 상세 리뷰, 2-4인 · 15-20분 · 난이도 하, 구매 가능한 곳까지 한번에 확인하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2557338953436433" crossorigin="anonymous"></script>
+<style>
+:root{
+  --felt:#16302A; --felt-deep:#0E211D; --paper:#F1E9D8; --paper-dim:#E4DAC3;
+  --ink:#241C15; --ink-soft:#4B4033; --brass:#C9973F; --brass-bright:#E0B25E;
+  --line:rgba(36,28,21,0.14); --line-on-felt:rgba(241,233,216,0.16);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
+a{color:var(--felt);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+header{position:sticky;top:0;z-index:50;background:var(--felt);color:var(--paper);border-bottom:1px solid var(--line-on-felt);}
+.header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:900;font-size:20px;text-decoration:none;color:var(--paper);}
+.logo-mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--brass),#2F6F62);flex:none;}
+nav{display:flex;gap:20px;font-size:13.5px;font-weight:500;}
+nav a{text-decoration:none;color:var(--paper);opacity:0.82;}
+nav a:hover{opacity:1;}
+main{max-width:820px;margin:0 auto;padding:0 28px 80px;}
+.breadcrumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);padding:20px 0 0;}
+.breadcrumb a{color:var(--ink-soft);text-decoration:underline;}
+.gh{
+  margin-top:18px;border-radius:16px;overflow:hidden;position:relative;
+  aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;
+}
+.gh .initial{position:absolute;left:20px;bottom:-6px;font-family:'Fraunces',serif;font-weight:900;font-size:120px;color:rgba(255,255,255,0.14);line-height:1;}
+.gh svg.icon{width:80px;height:80px;position:relative;z-index:1;}
+.gh .cat-chip{position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:rgba(0,0,0,0.28);color:#fff;padding:4px 10px;border-radius:999px;}
+.photo-credit{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-soft);opacity:0.6;margin:6px 0 0;text-align:right;}
+.title-block{padding:22px 0 6px;}
+.title-block .ko{font-size:clamp(26px,4vw,36px);margin:0 0 4px;}
+.title-block .en{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);}
+.stat-row{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);}
+.stat-row span{border:1px solid var(--line);border-radius:6px;padding:5px 11px;background:#fff;}
+.rating-badge{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;background:var(--paper-dim);border-radius:6px;padding:5px 11px;}
+.rating-badge svg{width:12px;height:12px;fill:var(--brass);}
+section.block{margin:30px 0;}
+section.block h2{font-size:18px;margin:0 0 12px;}
+section.block p{font-size:14.5px;line-height:1.85;color:var(--ink-soft);}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fit-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:13.5px;line-height:1.7;color:var(--ink-soft);}
+.fit-box.good{border-left:4px solid var(--felt);}
+.fit-box.bad{border-left:4px solid #B23A6B;}
+.fit-box b{color:var(--ink);display:block;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;}
+.buy-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+.buy-note{font-size:13px;line-height:1.75;color:var(--ink-soft);margin:0 0 16px;}
+.buy-links{display:flex;gap:10px;flex-wrap:wrap;}
+.buy-links a{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;
+  background:var(--felt);color:var(--paper);padding:10px 18px;border-radius:999px;
+  transition:background .15s;
+}
+.buy-links a:hover{background:var(--brass);color:var(--felt-deep);}
+.similar{display:flex;gap:12px;flex-wrap:wrap;}
+.similar a{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;text-decoration:none;color:var(--ink);
+  background:var(--paper-dim);padding:8px 14px;border-radius:999px;
+}
+footer{background:var(--felt-deep);color:var(--paper-dim);padding:24px 28px 32px;text-align:center;font-size:12.5px;font-family:'IBM Plex Mono',monospace;border-top:1px solid var(--line-on-felt);margin-top:40px;}
+footer a{color:var(--paper-dim);text-decoration:underline;}
+@media (max-width:640px){ nav{display:none;} .fit-grid{grid-template-columns:1fr;} .gh .initial{font-size:80px;} }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark"></span>보드게임 서가</a>
+    <nav>
+      <a href="../index.html#catalog">카탈로그</a>
+      <a href="../index.html#ranking">세계 순위</a>
+      <a href="../about.html">소개</a>
+      <a href="../contact.html">문의</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <p class="breadcrumb"><a href="../index.html">홈</a> / <a href="../index.html#catalog">카탈로그</a> / 러브레터</p>
+
+  <div class="gh" style="background:linear-gradient(150deg, #B23A6B, #7E2A4C);">
+    <span class="cat-chip">파티</span>
+    <span class="initial">러</span>
+    <svg class="icon" viewBox="0 0 100 100" style="color:#B23A6B"><path d="M50 10 L60 38 L90 38 L65 56 L74 84 L50 66 L26 84 L35 56 L10 38 L40 38 Z" fill="#fff" opacity="0.92"/></svg>
+  </div>
+
+  <div class="title-block">
+    <h1 class="ko">러브레터</h1>
+    <div class="en mono">Love Letter</div>
+  </div>
+
+  <div class="stat-row">
+    <span>2-4인</span><span>15-20분</span><span>난이도 하</span><span class="mono" style="font-size:11px;color:var(--ink-soft);">BGG 평점 미확인</span>
+  </div>
+  <div class="stat-row"><span>파티</span><span>카드게임</span></div>
+
+  <section class="block">
+    <h2>어떤 게임인가요</h2>
+    <p>카드 단 16장으로 진행되는 추리형 카드게임. 한 판이 5분도 안 걸려 여러 판을 몰아서 즐기기 좋습니다. 2-4인 기준으로 설계되어 있고, 평균 플레이 시간은 15-20분 정도로 잡으면 됩니다. 난이도는 하 수준으로, 카테고리로 보면 파티, 카드게임에 해당합니다.</p>
+  </section>
+
+  <section class="block">
+    <h2>이런 분께 추천해요</h2>
+    <div class="fit-grid">
+      <div class="fit-box good"><b>잘 맞는 분</b>사람이 여럿 모이는 자리에서 분위기를 띄우고 싶은 분</div>
+      <div class="fit-box bad"><b>다른 게임이 더 나을 수도 있는 분</b>차분하게 혼자 생각할 시간이 많은 게임을 원하는 분</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>구매 정보</h2>
+    <div class="buy-box">
+      <p class="buy-note">스테디셀러급 유통망을 가진 게임은 온라인몰과 보드게임 전문매장에서 정가로 구매할 수 있는 경우가 많습니다. 다만 정확한 재고 상황은 판매처마다 달라 아래 링크에서 실시간으로 확인하는 걸 추천합니다.</p>
+      <div class="buy-links">
+        <a href="https://www.coupang.com/np/search?q=%EB%9F%AC%EB%B8%8C%EB%A0%88%ED%84%B0" target="_blank" rel="noopener noreferrer nofollow">쿠팡에서 찾아보기</a>
+        <a href="https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Love%20Letter" target="_blank" rel="noopener noreferrer nofollow">BGG에서 평점 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class='block'><h2>비슷한 게임</h2><div class='similar'><a href="splendor.html">스플렌더</a><a href="dixit.html">딕싯</a><a href="codenames.html">코드네임</a><a href="bang.html">뱅!</a></div></section>
+</main>
+<footer>
+  보드게임 서가 · <a href="../about.html">소개</a> · <a href="../privacy.html">개인정보처리방침</a> · <a href="../terms.html">이용약관</a> · <a href="../contact.html">문의</a>
+</footer>
+</body>
+</html>
