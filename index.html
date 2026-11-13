@@ -8,6 +8,21 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2557338953436433"
      crossorigin="anonymous"></script>
 <title>한 판 더 — 보드게임 카탈로그 · 추천 · 구매처</title>
+<link rel="canonical" href="https://boardgame-catalog-bice.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="한 판 더">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="한 판 더 — 보드게임 카탈로그 · 추천 · 구매처">
+<meta property="og:description" content="가족 게임부터 헤비 유로게임까지, 125종의 보드게임을 인원·플레이 시간·난이도와 함께 정리하고 세계 인기 순위와 구매처까지 소개하는 보드게임 카탈로그입니다.">
+<meta property="og:url" content="https://boardgame-catalog-bice.vercel.app/">
+<meta property="og:image" content="https://boardgame-catalog-bice.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="한 판 더 — 보드게임 카탈로그 · 추천 · 구매처">
+<meta name="twitter:description" content="가족 게임부터 헤비 유로게임까지, 125종의 보드게임을 인원·플레이 시간·난이도와 함께 정리하고 세계 인기 순위와 구매처까지 소개하는 보드게임 카탈로그입니다.">
+<meta name="twitter:image" content="https://boardgame-catalog-bice.vercel.app/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -233,6 +248,18 @@
   .rank-cats{ display:flex; gap:5px; flex-wrap:wrap;}
   .rank-cats span{ font-family:'IBM Plex Mono',monospace; font-size:9px; background:rgba(241,233,216,0.08); padding:2px 7px; border-radius:999px; color:var(--paper-dim);}
 
+  .seo-index{ background:var(--paper); padding:48px 28px 56px; border-top:1px solid var(--line);}
+  .seo-inner{ max-width:1240px; margin:0 auto;}
+  .seo-index h2{ font-size:20px; margin:0 0 14px;}
+  .seo-index h2:not(:first-child){ margin-top:34px;}
+  .seo-index h3{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.04em; color:var(--ink-soft); margin:18px 0 6px; font-weight:600;}
+  .seo-index p{ font-size:13px; line-height:2; color:var(--ink-soft); margin:0;}
+  .seo-index p a{ color:var(--ink-soft); text-decoration:none;}
+  .seo-index p a:hover{ text-decoration:underline; color:var(--ink);}
+  .hub-links{display:flex;gap:8px;flex-wrap:wrap;margin:0;}
+  .hub-links a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none;color:var(--ink);background:var(--paper-dim);padding:8px 14px;border-radius:999px;}
+  .hub-links a:hover{background:var(--brass);}
+
   footer{
     background:var(--felt-deep); color:var(--paper-dim); padding:24px 28px 32px; text-align:center;
     font-size:12.5px; font-family:'IBM Plex Mono',monospace; border-top:1px solid var(--line-on-felt);
@@ -263,6 +290,7 @@
     .rank-stats{display:none;}
   }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "한 판 더", "url": "https://boardgame-catalog-bice.vercel.app/", "inLanguage": "ko", "description": "가족 게임부터 헤비 유로게임까지, 125종의 보드게임을 인원·플레이 시간·난이도와 함께 정리하고 세계 인기 순위와 구매처까지 소개하는 보드게임 카탈로그입니다."}</script>
 </head>
 <body>
 
@@ -281,7 +309,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="eyebrow">Board Game Catalog</div>
-    <h1>알던 게임도, 처음 보는 게임도<br>여기서 한 번에.</h1>
+    <h1>알던 보드게임도, 처음 보는 보드게임도<br>여기서 한 번에.</h1>
     <p>가족 게임부터 헤비 유로게임까지, 125종의 보드게임을 인원·시간·난이도와 함께 정리했습니다. 게임마다 상세 페이지에서 추천 이유와 구매처까지 확인할 수 있습니다.</p>
     <div class="hero-stats">
       <div class="hero-stat"><div class="num mono">125</div><div class="label">수록 게임</div></div>
@@ -333,6 +361,30 @@
       </thead>
       <tbody id="rank-body"></tbody>
     </table>
+  </div>
+</section>
+
+<section class="seo-index" aria-label="주제별 보드게임 목록">
+  <div class="seo-inner">
+    <h2>주제별 보드게임 모아보기</h2>
+    <div class="hub-links"><a href="list/family.html">가족 보드게임 추천</a><a href="list/party.html">파티 보드게임 추천</a><a href="list/coop.html">협력 보드게임 추천</a><a href="list/heavy-euro.html">헤비 유로게임 추천</a><a href="list/deckbuilding.html">덱빌딩 보드게임 추천</a><a href="list/abstract.html">추상전략 보드게임 추천</a><a href="list/card-game.html">카드게임 추천</a><a href="list/2-player.html">2인용 보드게임 추천</a><a href="list/beginner.html">입문자용 보드게임 추천</a><a href="list/short.html">30분 이내 보드게임 추천</a><a href="list/large-group.html">6인 이상 보드게임 추천</a></div>
+    <h2>전체 보드게임 목록</h2>
+    <h3>가족 보드게임 (30)</h3>
+    <p><a href="games/7-wonders.html">7 원더스</a> · <a href="games/7-wonders-duel.html">7 원더스 듀얼</a> · <a href="games/dorfromantik.html">도르프로만틱</a> · <a href="games/rummikub.html">루미큐브</a> · <a href="games/my-city.html">마이시티</a> · <a href="games/monopoly.html">모노폴리</a> · <a href="games/bohnanza.html">보난자</a> · <a href="games/sagrada.html">사그라다</a> · <a href="games/small-world.html">스몰월드</a> · <a href="games/sushi-go.html">스시고</a> · <a href="games/splendor.html">스플렌더</a> · <a href="games/azul.html">아줄</a> · <a href="games/the-quest-for-el-dorado.html">엘도라도를 향한 질주</a> · <a href="games/that-s-pretty-clever.html">왁자지껄 클레버</a> · <a href="games/wingspan.html">윙스팬</a> · <a href="games/istanbul.html">이스탄불</a> · <a href="games/karuba.html">카루바</a> · <a href="games/carcassonne.html">카르카손</a> · <a href="games/cascadia.html">카스카디아</a> · <a href="games/catan.html">카탄</a> · <a href="games/cartographers.html">카토그래퍼스</a> · <a href="games/colt-express.html">콜트 익스프레스</a> · <a href="games/qwirkle.html">쿼클</a> · <a href="games/the-quacks-of-quedlinburg.html">크베들린부르크의 돌팔이 약장수</a> · <a href="games/kingdomino.html">킹도미노</a> · <a href="games/ticket-to-ride.html">티켓 투 라이드</a> · <a href="games/patchwork.html">패치워크</a> · <a href="games/photosynthesis.html">포토신세시스</a> · <a href="games/port-royal.html">포트 로얄</a> · <a href="games/heat-pedal-to-the-metal.html">히트: 페달 투 더 메탈</a></p>
+    <h3>파티 보드게임 (21)</h3>
+    <p><a href="games/dixit.html">딕싯</a> · <a href="games/love-letter.html">러브레터</a> · <a href="games/munchkin.html">먼치킨</a> · <a href="games/cockroach-poker.html">바퀴벌레 포커</a> · <a href="games/bang.html">뱅!</a> · <a href="games/saboteur.html">사보퇴르</a> · <a href="games/secret-hitler.html">시크릿 히틀러</a> · <a href="games/uno.html">우노</a> · <a href="games/one-night-ultimate-werewolf.html">원 나이트 얼티밋 웨어울프</a> · <a href="games/exploding-kittens.html">익스플로딩 키튼</a> · <a href="games/just-one.html">저스트 원</a> · <a href="games/jenga.html">젠가</a> · <a href="games/camel-up.html">카멜업</a> · <a href="games/codenames.html">코드네임</a> · <a href="games/concept.html">콘셉트</a> · <a href="games/coup.html">쿠데타</a> · <a href="games/king-of-tokyo.html">킹 오브 도쿄</a> · <a href="games/take-5.html">테이크 5</a> · <a href="games/telestrations.html">텔레스트레이션</a> · <a href="games/perudo.html">페루도</a> · <a href="games/halli-galli.html">할리갈리</a></p>
+    <h3>협력 보드게임 (20)</h3>
+    <p><a href="games/ghost-stories.html">고스트 스토리</a> · <a href="games/betrayal-legacy.html">공포의 벽</a> · <a href="games/betrayal-at-house-on-the-hill.html">공포의 저택</a> · <a href="games/forbidden-desert.html">금지된 사막</a> · <a href="games/forbidden-island.html">금지된 섬</a> · <a href="games/the-mind.html">더 마인드</a> · <a href="games/the-crew-the-quest-for-planet-nine.html">더 크루</a> · <a href="games/robinson-crusoe.html">로빈슨 크루소</a> · <a href="games/micromacro-crime-city.html">마이크로매크로: 크라임 시티</a> · <a href="games/mansions-of-madness.html">맨션 오브 매드니스</a> · <a href="games/mysterium.html">미스터리움</a> · <a href="games/the-lord-of-the-rings.html">반지의 제왕</a> · <a href="games/lotr-journeys-in-middle-earth.html">반지의 제왕: 미들어스로의 여정</a> · <a href="games/sky-team.html">스카이팀</a> · <a href="games/legends-of-andor.html">안도르의 전설</a> · <a href="games/eldritch-horror.html">엘드리치 호러</a> · <a href="games/codenames-duet.html">코드네임 듀엣</a> · <a href="games/paleo.html">팔레오</a> · <a href="games/pandemic.html">팬데믹</a> · <a href="games/hanabi.html">하나비</a></p>
+    <h3>헤비 유로게임 (37)</h3>
+    <p><a href="games/gaia-project.html">가이아 프로젝트</a> · <a href="games/great-western-trail.html">그레이트 웨스턴 트레일</a> · <a href="games/gloomhaven.html">글룸헤이븐</a> · <a href="games/nemesis.html">네메시스</a> · <a href="games/dune-imperium.html">듄: 임페리움</a> · <a href="games/rising-sun.html">라이징 선</a> · <a href="games/res-arcana.html">레스 아르카나</a> · <a href="games/root.html">루트</a> · <a href="games/le-havre.html">르아브르</a> · <a href="games/barrage.html">바라지</a> · <a href="games/brass-birmingham.html">브라스: 버밍엄</a> · <a href="games/blood-rage.html">블러드 레이지</a> · <a href="games/viticulture.html">비티컬처</a> · <a href="games/scythe.html">사이드</a> · <a href="games/stone-age.html">스톤에이지</a> · <a href="games/spirit-island.html">스피릿 아일랜드</a> · <a href="games/through-the-ages.html">시간의 흐름</a> · <a href="games/agricola.html">아그리콜라</a> · <a href="games/anachrony.html">아나크로니</a> · <a href="games/ark-nova.html">아크 노바</a> · <a href="games/underwater-cities.html">언더워터 시티즈</a> · <a href="games/everdell.html">에버델</a> · <a href="games/on-mars.html">온 마스</a> · <a href="games/lords-of-waterdeep.html">워터딥의 영주들</a> · <a href="games/inis.html">이니스</a> · <a href="games/tzolk-in-the-mayan-calendar.html">촐킨</a> · <a href="games/caverna.html">카베르나</a> · <a href="games/kemet.html">케메트</a> · <a href="games/concordia.html">콩코르디아</a> · <a href="games/kingdom-death-monster.html">킹덤 데스: 몬스터</a> · <a href="games/terra-mystica.html">테라 미스티카</a> · <a href="games/terraforming-mars.html">테라포밍 마스</a> · <a href="games/teotihuacan.html">테오티우아칸</a> · <a href="games/trajan.html">트라얀</a> · <a href="games/five-tribes.html">파이브 트라이브즈</a> · <a href="games/food-chain-magnate.html">푸드체인 매그네이트</a> · <a href="games/puerto-rico.html">푸에르토리코</a></p>
+    <h3>덱빌딩 보드게임 (5)</h3>
+    <p><a href="games/dominion.html">도미니언</a> · <a href="games/marvel-champions.html">마블 챔피언스</a> · <a href="games/arkham-horror-the-card-game.html">아컴호러 카드게임</a> · <a href="games/clank.html">클랭크!</a> · <a href="games/harry-potter-hogwarts-battle.html">해리포터: 호그와트 전투</a></p>
+    <h3>추상전략 보드게임 (7)</h3>
+    <p><a href="games/da-vinci-code.html">다빈치 코드</a> · <a href="games/santorini.html">산토리니</a> · <a href="games/onitama.html">오니타마</a> · <a href="games/ingenious.html">인지니어스</a> · <a href="games/quoridor.html">쿼리도</a> · <a href="games/cluedo.html">클루</a> · <a href="games/hive.html">하이브</a></p>
+    <h3>카드게임 (2)</h3>
+    <p><a href="games/cat-in-the-box.html">캣 인 더 박스</a> · <a href="games/fantasy-realms.html">판타지 렐름</a></p>
+    <h3>워게임 (3)</h3>
+    <p><a href="games/war-of-the-ring.html">반지의 제왕 워 오브 더 링</a> · <a href="games/star-wars-rebellion.html">스타워즈: 반란</a> · <a href="games/twilight-struggle.html">트와일라잇 스트러글</a></p>
   </div>
 </section>
 
